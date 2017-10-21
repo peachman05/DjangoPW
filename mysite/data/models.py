@@ -11,34 +11,34 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 
 class Address(models.Model):
-    number_regis = models.CharField(max_length=10)
-    village_no_regis = models.IntegerField(default=0)
-    village_name_regis = models.CharField(max_length=40)
-    lane_regis = models.CharField(max_length=40) # ซอย
-    road_regis = models.CharField(max_length=70) 
-    sub_district_regis = models.CharField(max_length=70) 
-    district_regis = models.CharField(max_length=70)
-    province_regis = models.CharField(max_length=70)
-    postal_code_regis = models.IntegerField(default=0)
-    smartphone_number_regis = models.CharField(default=20)
-    phone_number_regis = models.CharField(default=20)
+    number_regis = models.CharField("เลขที่(ตามทะเบียนบ้าน)",max_length=10)
+    village_no_regis = models.IntegerField("หมู่(ตามทะเบียนบ้าน)",default=0)
+    village_name_regis = models.CharField("หมู่บ้าน(ตามทะเบียนบ้าน)",max_length=40)
+    lane_regis = models.CharField("ซอย(ตามทะเบียนบ้าน)",max_length=40) # ซอย
+    road_regis = models.CharField("ถนน(ตามทะเบียนบ้าน)",max_length=70) 
+    sub_district_regis = models.CharField("ตำบล(ตามทะเบียนบ้าน)",max_length=70) 
+    district_regis = models.CharField("อำเภอ(ตามทะเบียนบ้าน)",max_length=70)
+    province_regis = models.CharField("จังหวัด(ตามทะเบียนบ้าน)",max_length=70)
+    postal_code_regis = models.IntegerField("รหัสไปรษณีย์(ตามทะเบียนบ้าน)",default=0)
+    smartphone_number_regis = models.CharField("เบอร์มือถือ(ตามทะเบียนบ้าน)",max_length=20)
+    phone_number_regis = models.CharField("เบอร์โทรบ้าาน(ตามทะเบียนบ้าน)",max_length=20)
 
-    number = models.CharField(max_length=10)
-    village_no = models.IntegerField(default=0)
-    village_name = models.CharField(max_length=40)
-    lane = models.CharField(max_length=40) # ซอย
-    road = models.CharField(max_length=70) 
-    sub_district = models.CharField(max_length=70) 
-    district = models.CharField(max_length=70)
-    province = models.CharField(max_length=70)
-    postal_code = models.IntegerField(default=0)
-    smartphone_number = models.CharField(default=20)
-    phone_number = models.CharField(default=20)
+    number = models.CharField("เลขที่(ปัจจุบัน)",max_length=10)
+    village_no = models.IntegerField("หมู่(ปัจจุบัน)",default=0)
+    village_name = models.CharField("หมู่บ้าน(ปัจจุบัน)",max_length=40)
+    lane = models.CharField("ซอย(ปัจจุบัน)",max_length=40) # ซอย
+    road = models.CharField("ถนน(ปัจจุบัน)",max_length=70) 
+    sub_district = models.CharField("ตำบล(ปัจจุบัน)",max_length=70) 
+    district = models.CharField("อำเภอ(ปัจจุบัน)",max_length=70)
+    province = models.CharField("จังหวัด(ปัจจุบัน)",max_length=70)
+    postal_code = models.IntegerField("รหัสไปรษณีย์(ปัจจุบัน)",default=0)
+    smartphone_number = models.CharField("เบอร์มือถือ(ปัจจุบัน)",max_length=20)
+    phone_number = models.CharField("เบอร์โทรบ้าาน(ปัจจุบัน)",max_length=20)
 
 
 class PersonalInfo(models.Model):
 
-	TITLE_LIST = (
+    TITLE_LIST = (
         ('MR', 'Mr.'),
         ('MRS', 'Mrs.'),
         ('MISS', 'Miss.'),
@@ -58,7 +58,7 @@ class PersonalInfo(models.Model):
     )
     blood_type = models.CharField(max_length=6,choices=BLOOD_TYPE_LIST)
     birth_date = models.DateField('date published')
-    email =  model.EmailField(max_length=60)
+    email =  models.EmailField(max_length=60)
     STATUS_LIST = (
         ('MR', 'Married'),
         ('SN', 'Single'),
@@ -102,4 +102,27 @@ class WorkInfo(models.Model):
 	department = models.CharField(max_length=60)
 	subject = models.CharField(max_length=60)
 
+
+class Insignia(models.Model):
+	class1 = models.CharField(max_length=60)
+	date1 = models.DateField('date published')
+
+class Education(models.Model):
+	acronym_bachelor = models.CharField(max_length=10)
+	major_field_bachelor = models.CharField(max_length=40)
+	minor_field_bachelor = models.CharField(max_length=40)
+	start_year_bachelor = models.DateField('date published')
+	end_year_bachelor = models.DateField('date published')
+
+	acronym_master = models.CharField(max_length=10)
+	major_field_master = models.CharField(max_length=40)
+	minor_field_master = models.CharField(max_length=40)
+	start_year_master = models.DateField('date published')
+	end_year_master = models.DateField('date published')
+
+	acronym_phD = models.CharField(max_length=10)
+	major_field_phD = models.CharField(max_length=40)
+	minor_field_phD = models.CharField(max_length=40)
+	start_year_phD = models.DateField('date published')
+	end_year_phD = models.DateField('date published')
 
