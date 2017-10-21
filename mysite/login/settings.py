@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'django.contrib.staticfiles',
     'register_app',
+     'data',
+    # 'forms',
 ]
 
 MIDDLEWARE_CLASSES = [

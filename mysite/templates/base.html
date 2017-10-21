@@ -10,10 +10,16 @@
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
       <a href="{% url 'logout' %}">logout</a>
+
+      <a href="{% url 'data:personal_info' %}">personal_info</a> <br>
+      <a href="{% url 'data:address' %}">address</a> <br>
+      <a href="{% url 'data:work_info' %}">work_info</a> <br>
+      <a href="{% url 'data:insignia' %}">insignia</a> <br>
+      <a href="{% url 'data:education' %}">education</a> <br>
     {% else %}
-      <a href="{% url 'login' %}">login</a> 
-      <br>    
-      <a href="{% url 'signup' %}">signup</a> 
+      <a href="{% url 'login' %}">login</a>  <br>         
+      <a href="{% url 'signup' %}">signup</a> <br>   
+         
     {% endif %}
   </header>
   <hr>
