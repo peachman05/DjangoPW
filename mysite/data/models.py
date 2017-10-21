@@ -57,4 +57,49 @@ class PersonalInfo(models.Model):
         ('O', 'O'),
     )
     blood_type = models.CharField(max_length=6,choices=BLOOD_TYPE_LIST)
-    pub_date = models.DateField('date published')
+    birth_date = models.DateField('date published')
+    email =  model.EmailField(max_length=60)
+    STATUS_LIST = (
+        ('MR', 'Married'),
+        ('SN', 'Single'),
+        ('DV', 'Divorce'),
+        ('WD', 'Widow'),
+    )
+    status = models.CharField(max_length=10,choices=STATUS_LIST)
+    domicile_province = models.CharField(max_length=30)
+
+    firstname_spouse_thai = models.CharField(max_length=30)
+    lastname_spouse_thai = models.CharField(max_length=30)
+    firstname_spouse_eng = models.CharField(max_length=30)
+    lastname_spouse_eng = models.CharField(max_length=30)
+
+    firstname_father_thai = models.CharField(max_length=30)
+    lastname_father_thai = models.CharField(max_length=30)
+    firstnamename_father_eng = models.CharField(max_length=30)
+    lastname_father_eng = models.CharField(max_length=30)
+
+    firstname_mother_thai = models.CharField(max_length=30)
+    lastname_mother_thai = models.CharField(max_length=30)
+    firstname_mother_eng = models.CharField(max_length=30)
+    lastname_mother_eng = models.CharField(max_length=30)
+
+
+class WorkInfo(models.Model):
+	start_service_date = models.DateField('date published')
+	position = models.CharField(max_length=30)
+	group = models.CharField(max_length=30) #สังกัด
+	end_service_date = models.DateField('date published')
+	current_position = models.CharField(max_length=60)
+	position_number = models.CharField(max_length=20)
+	rank_number = models.CharField(max_length=20)
+	rank_money = models.IntegerField(default=0)
+	academic_standing = models.CharField(max_length=20)
+	academic_standing_money = models.IntegerField(default=0)
+
+	start_PW_date = models.DateField('date published')
+	isGPF_member = models.BooleanField()
+
+	department = models.CharField(max_length=60)
+	subject = models.CharField(max_length=60)
+
+
