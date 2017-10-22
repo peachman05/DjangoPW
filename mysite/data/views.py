@@ -11,14 +11,26 @@ def address(request):
         print(request.user.is_staff)
 
         try: # edit
+            print("edit")
             addressObj = Address.objects.get(user=request.user.id)
             form = AddressForm(request.POST or None, instance=addressObj)
-        except MyModel.DoesNotExist: # create
+            isCreate = False
+        except Address.DoesNotExist: # create
+            print("create")
             form = AddressForm()
+            isCreate = True
 
-        if request.method == 'POST' and form.is_valid():
-            form.save()
-            return redirect('home')
+        print("create2")
+        if request.method == 'POST' :
+            print("in")
+            if isCreate:
+                form = AddressForm(request.POST)
+            if form.is_valid():
+                print("in2")
+                recipe = form.save(commit=False)
+                recipe.user = request.user
+                recipe.save()
+                return redirect('home')
         
         return render(request,'data/address.html', {'form':form})
     else:
@@ -31,26 +43,32 @@ def insignia(request):
     return render(request,'data/insignia.html', {})
 
 def education(request):
-    # choiceObject = get_object_or_404(Choice, choice_text="1234")
-    print(request.user.id)
-    print(get_object_or_404(Address, user=request.user.id))
-    if request.method == 'POST' and form.is_valid():
-        print("in")
-        article = get_object_or_404(Choice, choice_text="1234")
-        form = ChoiceForm(request.POST, instance=article)		
+    if request.user.is_authenticated:        
+        print(request.user.is_staff)
+
+        try: # edit
+            print("edit")
+            addressObj = Choice.objects.get(question=2)
+            form = ChoiceForm(request.POST or None, instance=addressObj)
+            isCreate = False
+        except Choice.DoesNotExist: # create
+            print("create")
+            form = ChoiceForm()
+            isCreate = True
+
+        print("create2")
+        if request.method == 'POST' :            
+            print("in")
+            if isCreate:
+                form = ChoiceForm(request.POST)
+            print(form)    
+            if form.is_valid():
+                print("in2")
+                recipe = form.save(commit=False)
+                # recipe.user = request.user.id
+                recipe.save()
+                return redirect('home')
         
-        print(form)
-        form.save()
-        return redirect('home')
+        return render(request,'data/education.html', {'form':form})
     else:
-        # form = ChoiceForm()
-        print("else")
-        article = get_object_or_404(Choice, choice_text="1234")
-        form = ChoiceForm(request.POST or None,instance=article)
-        # form.votes = 9
-        # form = ChoiceForm()
-        # choiceEn = form.save(commit=False)
-        # choiceEn.votes = 9
-        # print(choiceEn.votes)    
-        # print(form)
-    return render(request,'data/education.html', {'form':form})
+        return render(request,'home.html', {})

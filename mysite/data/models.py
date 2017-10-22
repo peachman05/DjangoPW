@@ -52,7 +52,9 @@ class Address(models.Model):
 class AddressForm(ModelForm):
     class Meta:
         model = Address
-        fields = ['number_regis', 'village_no_regis', 'village_name_regis']
+        # fields = ['number_regis', 'village_no_regis', 'village_name_regis']
+        # fields = '__all__'
+        exclude = ['user']
 
 
 class PersonalInfo(models.Model):
