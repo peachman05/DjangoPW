@@ -6,8 +6,15 @@ from .models import *
 # Create your views here.
 
 
-def getForm(request,modelInput,modelFormInput,path,userInput):
+def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
+
+    if user_id_input == None:
+        userInput = request.user
+    elif request.user.is_staff:
+        userInput = get_object_or_404(User, pk=user_id_input)
+
     print(userInput.username)
+
     if request.user.is_authenticated:  
         try: # edit
             modelObj = modelInput.objects.get(user=userInput.id)
@@ -27,64 +34,38 @@ def getForm(request,modelInput,modelFormInput,path,userInput):
                 recipe.user = userInput
                 recipe.save()
                 return redirect('home')
-        
-        return render(request,'data/'+path+'.html', {'form':form})
+        dict_send['form'] = form
+        return render(request,'data/'+path+'.html', dict_send)
     else:
         return render(request,'login.html', {})
 
-def personal_info(request):
-    return render(request,'data/personal_info.html', {})
-
-def address(request,user_id_input=None):
+# def checkUser(request,modelInput,modelFormInput,path,user_id_input):
     if user_id_input == None:
-        return getForm(request,Address,AddressForm,'address',request.user)    
+        return getForm(request,modelInput,modelFormInput,path,request.user)    
     elif request.user.is_staff:
         userObj = get_object_or_404(User, pk=user_id_input)
-        print("ffff")
-        return getForm(request,Address,AddressForm,'address',userObj)
+        return getForm(request,modelInput,modelFormInput,path,userObj)
 
-def work_info(request):
-    return render(request,'data/work_info.html', {})
+def personal_info(request,user_id_input=None):
+    dict_send = {'title':'Personal Information'}
+    return getForm(request,PersonalInfo,PersonalInfoForm,'baseInfo',user_id_input,dict_send)
 
-def insignia(request):
-    return render(request,'data/insignia.html', {})
+def address(request,user_id_input=None):
+    dict_send = {'title':'Address'}
+    return getForm(request,Address,AddressForm,'baseInfo',user_id_input,dict_send)
 
-def education(request):
-    if request.user.is_authenticated:        
-        print(request.user.is_staff)
+def work_info(request,user_id_input=None):
+    dict_send = {'title':'Work Infomation'}
+    return getForm(request,WorkInfo,WorkInfoForm,'baseInfo',user_id_input,dict_send)
 
-        try: # edit
-            print("edit")
-            addressObj = Choice.objects.get(question=2)
-            form = ChoiceForm(request.POST or None, instance=addressObj)
-            isCreate = False
-        except Choice.DoesNotExist: # create
-            print("create")
-            form = ChoiceForm()
-            isCreate = True
+def insignia(request,user_id_input=None):
+    dict_send = {'title':'Insignia'}
+    return getForm(request,Insignia,InsigniaForm,'baseInfo',user_id_input,dict_send)
 
-        print("create2")
-        if request.method == 'POST' :            
-            print("in")
-            if isCreate:
-                form = ChoiceForm(request.POST)
-            print(form)    
-            if form.is_valid():
-                print("in2")
-                recipe = form.save(commit=False)
-                # recipe.user = request.user.id
-                recipe.save()
-                return redirect('home')
-        
-        return render(request,'data/education.html', {'form':form})
-    else:
-        return render(request,'home.html', {})
+def education(request,user_id_input=None):
+    dict_send = {'title':'Education'}
+    return getForm(request,Education,EducationForm,'baseInfo',user_id_input, dict_send)
 
 def list_teacher(request):
-        teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #User.objects.order_by('username')[:5]
-
-        return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})
-    # <!-- {% for user in teacher_obj_list %}
-    #     <li><a href="{% url 'data:detail' user.id %}">{{ question.question_text }}</a></li>
-    # {% endfor %}
-    # {{teacher_obj_list}}-->
+    teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #[:5]
+    return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})

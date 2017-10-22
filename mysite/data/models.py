@@ -58,7 +58,7 @@ class AddressForm(ModelForm):
 
 
 class PersonalInfo(models.Model):
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
     TITLE_LIST = (
         ('MR', 'Mr.'),
         ('MRS', 'Mrs.'),
@@ -104,46 +104,65 @@ class PersonalInfo(models.Model):
     firstname_mother_eng = models.CharField(max_length=30)
     lastname_mother_eng = models.CharField(max_length=30)
 
+class PersonalInfoForm(ModelForm):
+    class Meta:
+        model = PersonalInfo
+        exclude = ['user']
 
 class WorkInfo(models.Model):
-	start_service_date = models.DateField('date published')
-	position = models.CharField(max_length=30)
-	group = models.CharField(max_length=30) #สังกัด
-	end_service_date = models.DateField('date published')
-	current_position = models.CharField(max_length=60)
-	position_number = models.CharField(max_length=20)
-	rank_number = models.CharField(max_length=20)
-	rank_money = models.IntegerField(default=0)
-	academic_standing = models.CharField(max_length=20)
-	academic_standing_money = models.IntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
+    start_service_date = models.DateField('date published')
+    position = models.CharField(max_length=30)
+    group = models.CharField(max_length=30) #สังกัด
+    end_service_date = models.DateField('date published')
+    current_position = models.CharField(max_length=60)
+    position_number = models.CharField(max_length=20)
+    rank_number = models.CharField(max_length=20)
+    rank_money = models.IntegerField(default=0)
+    academic_standing = models.CharField(max_length=20)
+    academic_standing_money = models.IntegerField(default=0)
 
-	start_PW_date = models.DateField('date published')
-	isGPF_member = models.BooleanField()
+    start_PW_date = models.DateField('date published')
+    isGPF_member = models.BooleanField()
 
-	department = models.CharField(max_length=60)
-	subject = models.CharField(max_length=60)
+    department = models.CharField(max_length=60)
+    subject = models.CharField(max_length=60)
 
+class WorkInfoForm(ModelForm):
+    class Meta:
+        model = WorkInfo
+        exclude = ['user']
 
 class Insignia(models.Model):
-	class1 = models.CharField(max_length=60)
-	date1 = models.DateField('date published')
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
+    class1 = models.CharField(max_length=60)
+    date1 = models.DateField('date published')
 
+class InsigniaForm(ModelForm):
+    class Meta:
+        model = Insignia
+        exclude = ['user']
 class Education(models.Model):
-	acronym_bachelor = models.CharField(max_length=10)
-	major_field_bachelor = models.CharField(max_length=40)
-	minor_field_bachelor = models.CharField(max_length=40)
-	start_year_bachelor = models.DateField('date published')
-	end_year_bachelor = models.DateField('date published')
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
+    acronym_bachelor = models.CharField(max_length=10)
+    major_field_bachelor = models.CharField(max_length=40)
+    minor_field_bachelor = models.CharField(max_length=40)
+    start_year_bachelor = models.DateField('date published')
+    end_year_bachelor = models.DateField('date published')
 
-	acronym_master = models.CharField(max_length=10)
-	major_field_master = models.CharField(max_length=40)
-	minor_field_master = models.CharField(max_length=40)
-	start_year_master = models.DateField('date published')
-	end_year_master = models.DateField('date published')
+    acronym_master = models.CharField(max_length=10)
+    major_field_master = models.CharField(max_length=40)
+    minor_field_master = models.CharField(max_length=40)
+    start_year_master = models.DateField('date published')
+    end_year_master = models.DateField('date published')
 
-	acronym_phD = models.CharField(max_length=10)
-	major_field_phD = models.CharField(max_length=40)
-	minor_field_phD = models.CharField(max_length=40)
-	start_year_phD = models.DateField('date published')
-	end_year_phD = models.DateField('date published')
+    acronym_phD = models.CharField(max_length=10)
+    major_field_phD = models.CharField(max_length=40)
+    minor_field_phD = models.CharField(max_length=40)
+    start_year_phD = models.DateField('date published')
+    end_year_phD = models.DateField('date published')
 
+class EducationForm(ModelForm):
+    class Meta:
+        model = Education
+        exclude = ['user']
