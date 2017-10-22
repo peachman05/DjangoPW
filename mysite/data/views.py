@@ -7,18 +7,19 @@ from .models import *
 
 
 def getForm(request,modelInput,modelFormInput,path,userInput):
-
+    print(userInput.username)
     if request.user.is_authenticated:  
         try: # edit
             modelObj = modelInput.objects.get(user=userInput.id)
             form = modelFormInput(request.POST or None, instance=modelObj)
             isCreate = False
         except modelInput.DoesNotExist: # create
+            print("create")
             form = modelFormInput()
             isCreate = True
 
-        print("create2")
         if request.method == 'POST' :
+            print("in")
             if isCreate:
                 form = modelFormInput(request.POST)
             if form.is_valid():
@@ -34,11 +35,12 @@ def getForm(request,modelInput,modelFormInput,path,userInput):
 def personal_info(request):
     return render(request,'data/personal_info.html', {})
 
-def address(request,user_id_Input = None):
-    if user_id_Input == None:
+def address(request,user_id_input=None):
+    if user_id_input == None:
         return getForm(request,Address,AddressForm,'address',request.user)    
-    else:
-        userObj = get_object_or_404(User, pk=user_id_Input)
+    elif request.user.is_staff:
+        userObj = get_object_or_404(User, pk=user_id_input)
+        print("ffff")
         return getForm(request,Address,AddressForm,'address',userObj)
 
 def work_info(request):
@@ -79,7 +81,8 @@ def education(request):
         return render(request,'home.html', {})
 
 def list_teacher(request):
-        teacher_obj_list = User.objects.order_by('username')[:5]
+        teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #User.objects.order_by('username')[:5]
+
         return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})
     # <!-- {% for user in teacher_obj_list %}
     #     <li><a href="{% url 'data:detail' user.id %}">{{ question.question_text }}</a></li>

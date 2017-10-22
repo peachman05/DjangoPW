@@ -1,7 +1,7 @@
 {% if teacher_obj_list %}
     <ul>
         {% for user in teacher_obj_list %}
-             <li>{{ user.username }}</li>
+            <li><a href="{% url 'data:address' user.id %}">{{ user.username }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
