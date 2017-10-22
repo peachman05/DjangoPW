@@ -18,11 +18,15 @@
   </header>
   <hr>
   {% if user.is_authenticated %}
-    <a href="{% url 'data:personal_info' %}">personal_info</a>
-    <a href="{% url 'data:address' %}">address</a> 
-    <a href="{% url 'data:work_info' %}">work_info</a> 
-    <a href="{% url 'data:insignia' %}">insignia</a>
-    <a href="{% url 'data:education' %}">education</a>
+      {% if user.is_staff %}
+        <a href="{% url 'data:list_teacher' %}">list Teacher</a> 
+      {% else %}
+        <a href="{% url 'data:personal_info' %}">personal_info</a>
+        <a href="{% url 'data:address' %}">address</a> 
+        <a href="{% url 'data:work_info' %}">work_info</a> 
+        <a href="{% url 'data:insignia' %}">insignia</a>
+        <a href="{% url 'data:education' %}">education</a>
+      {% endif %}
   {% endif %}
   <main>
     {% block content %}

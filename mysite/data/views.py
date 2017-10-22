@@ -1,40 +1,45 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect ,get_object_or_404
 from django.http import Http404
+from django.contrib.auth.models import User
 from .models import *
 # Create your views here.
-def personal_info(request):
-    return render(request,'data/personal_info.html', {})
 
-def address(request):
-    if request.user.is_authenticated:        
-        print(request.user.is_staff)
 
+def getForm(request,modelInput,modelFormInput,path,userInput):
+
+    if request.user.is_authenticated:  
         try: # edit
-            print("edit")
-            addressObj = Address.objects.get(user=request.user.id)
-            form = AddressForm(request.POST or None, instance=addressObj)
+            modelObj = modelInput.objects.get(user=userInput.id)
+            form = modelFormInput(request.POST or None, instance=modelObj)
             isCreate = False
-        except Address.DoesNotExist: # create
-            print("create")
-            form = AddressForm()
+        except modelInput.DoesNotExist: # create
+            form = modelFormInput()
             isCreate = True
 
         print("create2")
         if request.method == 'POST' :
-            print("in")
             if isCreate:
-                form = AddressForm(request.POST)
+                form = modelFormInput(request.POST)
             if form.is_valid():
-                print("in2")
                 recipe = form.save(commit=False)
-                recipe.user = request.user
+                recipe.user = userInput
                 recipe.save()
                 return redirect('home')
         
-        return render(request,'data/address.html', {'form':form})
+        return render(request,'data/'+path+'.html', {'form':form})
     else:
-        return render(request,'home.html', {})
+        return render(request,'login.html', {})
+
+def personal_info(request):
+    return render(request,'data/personal_info.html', {})
+
+def address(request,user_id_Input = None):
+    if user_id_Input == None:
+        return getForm(request,Address,AddressForm,'address',request.user)    
+    else:
+        userObj = get_object_or_404(User, pk=user_id_Input)
+        return getForm(request,Address,AddressForm,'address',userObj)
 
 def work_info(request):
     return render(request,'data/work_info.html', {})
@@ -72,3 +77,11 @@ def education(request):
         return render(request,'data/education.html', {'form':form})
     else:
         return render(request,'home.html', {})
+
+def list_teacher(request):
+        teacher_obj_list = User.objects.order_by('username')[:5]
+        return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})
+    # <!-- {% for user in teacher_obj_list %}
+    #     <li><a href="{% url 'data:detail' user.id %}">{{ question.question_text }}</a></li>
+    # {% endfor %}
+    # {{teacher_obj_list}}-->

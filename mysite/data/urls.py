@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^work_info/', views.work_info,  name='work_info'),
     url(r'^insignia/', views.insignia,  name='insignia'),
     url(r'^education/', views.education,  name='education'),
+
+    url(r'^list_teacher/', views.list_teacher,  name='list_teacher'),
 ]

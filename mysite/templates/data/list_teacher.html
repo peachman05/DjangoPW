@@ -1,0 +1,9 @@
+{% if teacher_obj_list %}
+    <ul>
+        {% for user in teacher_obj_list %}
+             <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
