@@ -1,4 +1,6 @@
 from django.db import models
+from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Question(models.Model):
@@ -10,7 +12,14 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
+
+class ChoiceForm(ModelForm):
+    class Meta:
+        model = Choice
+        fields = ['question', 'choice_text', 'votes']
+
 class Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
     number_regis = models.CharField("เลขที่(ตามทะเบียนบ้าน)",max_length=10)
     village_no_regis = models.IntegerField("หมู่(ตามทะเบียนบ้าน)",default=0)
     village_name_regis = models.CharField("หมู่บ้าน(ตามทะเบียนบ้าน)",max_length=40)
@@ -34,6 +43,11 @@ class Address(models.Model):
     postal_code = models.IntegerField("รหัสไปรษณีย์(ปัจจุบัน)",default=0)
     smartphone_number = models.CharField("เบอร์มือถือ(ปัจจุบัน)",max_length=20)
     phone_number = models.CharField("เบอร์โทรบ้าาน(ปัจจุบัน)",max_length=20)
+
+class AddressForm(ModelForm):
+    class Meta:
+        model = Address
+        fields = ['number_regis', 'village_no_regis', 'village_name_regis']
 
 
 class PersonalInfo(models.Model):
