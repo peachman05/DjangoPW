@@ -4,16 +4,20 @@
 
 
   <h2>Address</h2>
-  <h1>Django Girls Blog</h1>
 
   
     <form method="post">
     {% csrf_token %}
     {{ form.non_field_errors }}
     
-    <h3>ที่อยู่ตามทะเบียนบ้าน</h3>    
+        
   
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5"><h3>ที่อยู่ตามทะเบียนบ้าน</h3></div>
+        </div>
+
         <div class="row">
             <div class="fieldWrapper">
                 {{ form.number_regis.errors }}
@@ -158,7 +162,12 @@
         </div>
 
 
-        <h3>ที่อยู่ปัจจุบัน</h3>
+        
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5"><h3>ที่อยู่ปัจจุบัน</h3></div>
+        </div>
+
         <div class="row">
             <div class="fieldWrapper">
                 {{ form.number.errors }}
@@ -302,10 +311,16 @@
             </div>
         </div>
 
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"> 
+                <button type="submit">submit</button>
+            </div>
+        </div>
 
     </div>
  
-    <button type="submit">submit</button>
   </form>
 
 {% endblock %}

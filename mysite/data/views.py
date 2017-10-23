@@ -75,7 +75,7 @@ def personal_info(request,user_id_input=None):
         "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
         "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
     ]
-    return getForm(request,PersonalInfo,PersonalInfoForm,'baseInfo',user_id_input,dict_send)
+    return getForm(request,PersonalInfo,PersonalInfoForm,'personal_info',user_id_input,dict_send)
 
 def address(request,user_id_input=None):
     dict_send = {'title':'Address'}
@@ -84,7 +84,7 @@ def address(request,user_id_input=None):
 
 def work_info(request,user_id_input=None):
     dict_send = {'title':'Work Infomation'}
-    return getForm(request,WorkInfo,WorkInfoForm,'baseInfo',user_id_input,dict_send)
+    return getForm(request,WorkInfo,WorkInfoForm,'work_info',user_id_input,dict_send)
 
 def insignia(request,user_id_input=None):
     dict_send = {'title':'Insignia'}

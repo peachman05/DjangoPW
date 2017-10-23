@@ -150,18 +150,21 @@ class Education(models.Model):
     acronym_bachelor = models.CharField(max_length=10)
     major_field_bachelor = models.CharField(max_length=40)
     minor_field_bachelor = models.CharField(max_length=40)
+    university_bachelor = models.CharField(max_length=70,default='-')
     start_year_bachelor = models.DateField('date published')
     end_year_bachelor = models.DateField('date published')
 
     acronym_master = models.CharField(max_length=10)
     major_field_master = models.CharField(max_length=40)
     minor_field_master = models.CharField(max_length=40)
+    university_master = models.CharField(max_length=70,default='-')
     start_year_master = models.DateField('date published')
     end_year_master = models.DateField('date published')
 
     acronym_phD = models.CharField(max_length=10)
     major_field_phD = models.CharField(max_length=40)
     minor_field_phD = models.CharField(max_length=40)
+    university_phD = models.CharField(max_length=70,default='-')
     start_year_phD = models.DateField('date published')
     end_year_phD = models.DateField('date published')
 

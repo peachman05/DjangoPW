@@ -1,1 +1,134 @@
-hello
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h2>ข้อมูลการทำงาน</h2>
+
+  
+  <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      
+      
+
+      <div class="container-fluid">
+         
+        <div class="row">              
+            {{ form.start_service_date.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วันเข้ารับราชการ</b></div>
+            <div class="col-sm-3">{{ form.start_service_date }} </div>
+        </div>
+
+        <div class="row">    
+            {{ form.position.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ตำแหน่ง</b></div>
+            <div class="col-sm-3">{{ form.position }}</div>
+        </div>
+
+        <div class="row">       
+            {{ form.group.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>สังกัด</b></div>
+            <div class="col-sm-3">{{ form.group }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.end_service_date.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วันเกษียณอายุราชการ</b></div>
+            <div class="col-sm-3">{{ form.end_service_date }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.start_PW_date.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วันที่ดำรงตำแหน่งที่โรงเรียนปทุมวิไล</b></div>
+            <div class="col-sm-3">{{ form.start_PW_date }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.current_position.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ตำแหน่งปัจจุบัน</b></div>
+            <div class="col-sm-3">{{ form.current_position }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.position_number.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>เลขที่ตำแหน่ง</b></div>
+            <div class="col-sm-3">{{ form.position_number }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.position_number.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>เลขที่ตำแหน่ง</b></div>
+            <div class="col-sm-3">{{ form.position_number }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.rank_number.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>อันดับ</b></div>
+            <div class="col-sm-3">{{ form.rank_number }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.rank_money.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ขั้น</b></div>
+            <div class="col-sm-2">{{ form.rank_money }}</div>            
+            <div class="col-sm-3">บาท</div>
+        </div>
+
+        <div class="row">
+            {{ form.academic_standing.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วิทยฐานะ</b></div>
+            <div class="col-sm-3">{{ form.academic_standing }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.academic_standing_money.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>เงินวิทยฐานะ</b></div>
+            <div class="col-sm-3">{{ form.academic_standing_money }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.isGPF_member.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>สมาชิก กบข.</b></div>
+            <div class="col-sm-3">{{ form.isGPF_member }}</div>
+        </div>
+        
+        <div class="row">
+            {{ form.department.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ปัจจุบันสอนกลุ่มสาระ</b></div>
+            <div class="col-sm-3">{{ form.department }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.subject.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วิชาที่สอน</b></div>
+            <div class="col-sm-3">{{ form.subject }}</div>
+        </div>
+
+
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"> 
+                <button type="submit">submit</button>
+            </div>
+        </div>
+      </div>
+  </form>
+
+{% endblock %}

@@ -3,39 +3,141 @@
 {% block content %}
 
 
-  <h2>ข้อมูลเครื่องราชอิสริยาภรณ์</h2>
+  <h2>ข้อมูลการศึกษา</h2>
 
   
-    <form method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-     
-  
-    <div class="container-fluid">
-        <div class="row">
-            <div class="fieldWrapper">
-                {{ form.class1.errors }}
-                <div class="col-sm-1"></div>
-                <div class="col-sm-1"><b>ชั้นที่ 1</b></div>
-                <div class="col-sm-3">{{ form.class1 }} </div>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      
+      
 
-                {{ form.date1.errors }}
-                <div class="col-sm-1"><b>วัน/เดือน/ปี</b></div>
-                <div class="col-sm-3">{{ form.date1 }}</div>
-                
-            </div>
-        </div>         
-     
-        
-   
-        <br>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-1"> 
-                <button type="submit">submit</button>
-            </div>
-        </div>
-    </div>
+      <div class="container-fluid">
+          <!--  ปริญญาตรี -->
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5"><h3>วุฒิการศึกษาระดับปริญญาตรี</h3></div>
+          </div>
+
+          <div class="row">              
+              {{ form.acronym_bachelor.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>อักษรย่อ</b></div>
+              <div class="col-sm-3">{{ form.acronym_bachelor }} </div>
+          </div>
+
+          <div class="row">    
+              {{ form.major_field_bachelor.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาเอก</b></div>
+              <div class="col-sm-3">{{ form.major_field_bachelor }}</div>
+          </div>
+
+          <div class="row">       
+              {{ form.minor_field_bachelor.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาโท</b></div>
+              <div class="col-sm-3">{{ form.minor_field_bachelor }}</div>
+          </div>
+
+          <div class="row">
+              {{ form.start_year_bachelor.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สถาบัน</b></div>
+              <div class="col-sm-3">{{ form.start_year_bachelor }}</div>
+          </div>
+
+          <div class="row">
+              {{ form.end_year_bachelor.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>ปีที่เริ่มศึกษา</b></div>
+              <div class="col-sm-3">{{ form.end_year_bachelor }}</div>
+          </div>
+  
+          <!-- ปริญญาโท -->
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5"><h3>วุฒิการศึกษาระดับปริญญาโท</h3></div>
+          </div>
+
+          <div class="row">              
+              {{ form.acronym_master.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>อักษรย่อ</b></div>
+              <div class="col-sm-3">{{ form.acronym_master }} </div>
+          </div>
+
+          <div class="row">    
+              {{ form.major_field_master.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาเอก</b></div>
+              <div class="col-sm-3">{{ form.major_field_master }}</div>
+          </div>
+
+          <div class="row">       
+              {{ form.minor_field_master.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาโท</b></div>
+              <div class="col-sm-3">{{ form.minor_field_master }}</div>
+          </div>
+
+          <div class="row">
+              {{ form.start_year_master.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สถาบัน</b></div>
+              <div class="col-sm-3">{{ form.start_year_master }}</div>
+          </div>
+
+          <!-- ปริญญาเอก -->
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5"><h3>วุฒิการศึกษาระดับปริญญาเอก</h3></div>
+          </div>
+
+          <div class="row">              
+              {{ form.acronym_phD.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>อักษรย่อ</b></div>
+              <div class="col-sm-3">{{ form.acronym_phD }} </div>
+          </div>
+
+          <div class="row">    
+              {{ form.major_field_phD.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาเอก</b></div>
+              <div class="col-sm-3">{{ form.major_field_phD }}</div>
+          </div>
+
+          <div class="row">       
+              {{ form.minor_field_phD.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สาขาวิชาโท</b></div>
+              <div class="col-sm-3">{{ form.minor_field_phD }}</div>
+          </div>
+
+          <div class="row">
+              {{ form.start_year_phD.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>สถาบัน</b></div>
+              <div class="col-sm-3">{{ form.start_year_phD }}</div>
+          </div>
+
+          <div class="row">
+              {{ form.end_year_phD.errors }}
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2"><b>ปีที่เริ่มศึกษา</b></div>
+              <div class="col-sm-3">{{ form.end_year_phD }}</div>
+          </div>
+
+
+          <br>
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-1"> 
+                  <button type="submit">submit</button>
+              </div>
+          </div>
+      </div>
   </form>
 
 {% endblock %}

@@ -1,1 +1,179 @@
-hello
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h2>ข้อมูลส่วนตัว</h2>
+
+  
+  <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      
+      
+
+      <div class="container-fluid">
+         
+        <div class="row">              
+            {{ form.title.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>คำนำหน้าชื่อ</b></div>
+            <div class="col-sm-3">{{ form.title }} </div>
+        </div>
+
+        <div class="row">    
+            {{ form.firstname_thai.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อ(ไทย)</b></div>
+            <div class="col-sm-2">{{ form.firstname_thai }}</div>
+
+            {{ form.lastname_thai.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_thai }}</div>
+        </div>
+
+        <div class="row">    
+            {{ form.firstname_eng.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อ(อังกฤษ)</b></div>
+            <div class="col-sm-2">{{ form.firstname_eng }}</div>
+
+            {{ form.lastname_eng.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_eng }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.card_number.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>เลขบัตรประจำตัวประชาชน</b></div>
+            <div class="col-sm-3">{{ form.card_number }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.religion.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ศาสนา</b></div>
+            <div class="col-sm-3">{{ form.religion }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.blood_type.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>กรุ๊ปเลือด</b></div>
+            <div class="col-sm-3">{{ form.blood_type }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.birth_date.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>วัน/เดือน/ปี เกิด</b></div>
+            <div class="col-sm-3">{{ form.birth_date }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.email.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>Email</b></div>
+            <div class="col-sm-3">{{ form.email }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.status.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>สถานภาพ</b></div>
+            <div class="col-sm-2">{{ form.status }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.domicile_province.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ภูมิลำเนาเดิม จังหวัด</b></div>
+            <div class="col-sm-3">{{ form.domicile_province }}</div>
+        </div>
+
+        <div class="row">
+            {{ form.firstname_spouse_thai.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อคู่สมรส(ไทย)</b></div>
+            <div class="col-sm-2">{{ form.firstname_spouse_thai }}</div>
+
+            {{ form.lastname_spouse_thai.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_spouse_thai }}</div>
+
+        </div>
+
+        <div class="row">
+            {{ form.firstname_spouse_eng.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อคู่สมรส(อังกฤษ)</b></div>
+            <div class="col-sm-2">{{ form.firstname_spouse_eng }}</div>
+
+            {{ form.lastname_spouse_eng.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_spouse_eng }}</div>
+
+        </div>
+
+        <div class="row">
+            {{ form.firstname_father_thai.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อบิดา(ไทย)</b></div>
+            <div class="col-sm-2">{{ form.firstname_father_thai }}</div>
+
+            {{ form.lastname_father_thai.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_father_thai }}</div>
+
+        </div>
+
+        <div class="row">
+            {{ form.firstnamename_father_eng.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อบิดา(อังกฤษ)</b></div>
+            <div class="col-sm-2">{{ form.firstnamename_father_eng }}</div>
+
+            {{ form.lastname_father_eng.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_father_eng }}</div>
+
+        </div>
+
+
+        <div class="row">
+            {{ form.firstname_mother_thai.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อมารดา(ไทย)</b></div>
+            <div class="col-sm-2">{{ form.firstname_mother_thai }}</div>
+
+            {{ form.lastname_mother_thai.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_mother_thai }}</div>
+
+        </div>
+    
+        <div class="row">
+            {{ form.firstname_mother_eng.errors }}
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"><b>ชื่อมารดา(อังกฤษ)</b></div>
+            <div class="col-sm-2">{{ form.firstname_mother_eng }}</div>
+
+            {{ form.lastname_mother_eng.errors }}
+            <div class="col-sm-1"><b>นามสกุล</b></div>
+            <div class="col-sm-3">{{ form.lastname_mother_eng }}</div>
+
+        </div>
+
+
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"> 
+                <button type="submit">submit</button>
+            </div>
+        </div>
+      </div>
+  </form>
+
+{% endblock %}

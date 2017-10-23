@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}Django Simple Login{% endblock %}</title>
+  <title>{% block title %}Welcome{% endblock %}</title>
   {% load staticfiles %}
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
@@ -15,7 +15,7 @@
   <header>
     <h1>Django Simple Login</h1>
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
+      Hi {{ user.username }}
       <a href="{% url 'logout' %}">logout</a>     
     {% else %}
       <a href="{% url 'login' %}">login</a>  <br>         
@@ -41,7 +41,7 @@
   </main>
   <hr>
   <footer>
-    <a href="http://simpleisbetterthancomplex.com">simpleisbetterthancomplex.com</a>
+    
   </footer>
 </body>
 </html>
