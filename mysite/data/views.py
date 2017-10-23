@@ -36,8 +36,12 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
                 return redirect('home')
         dict_send['form'] = form
         # print(type(form))
+        i = 0
+        # dict_send['form_tuple'] = []
+        # print(dict_send)
         # for field in form:
-        #     print(field)
+        #     dict_send['form_tuple'].append( (dict_send['name_list'][i] , field) )
+        #     i += 1
         # for key, value in form.iteritems() :
         #     print(key)
         return render(request,'data/'+path+'.html', dict_send)
@@ -53,10 +57,29 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
 
 def personal_info(request,user_id_input=None):
     dict_send = {'title':'Personal Information'}
+    dict_send['name_list'] = [
+        "คำนำหน้าชื่อ",
+        "ชื่อจริง(ไทย)","นามสกุล(ไทย)",
+        "ชื่อจริง(อังกฤษ)","นามสกุล(อังกฤษ)",
+        "เลขประจำตัวประชาชน","ศาสนา",
+        "หมู่โลหิต","วัน/เดือน/ปี เกิด",
+        "Email","สภาณภาพ",
+        "ภูมิลำเนาเดิมจังหวัด",
+        "ชื่อจริงคู่สมรส(ไทย)","นามสกุลคู่สมรส(ไทย)",
+        "ชื่อจริงคู่สมรส(อังกฤษ)","นามสกุลคู่สมรส(อังกฤษ)",
+        "ชื่อจริงบิดา(ไทย)","นามสกุลบิดา(ไทย)",
+        "ชื่อจริงบิดา(อังกฤษ)","นามสกุลบิดา(อังกฤษ)",
+        "ชื่อจริงมารดา(ไทย)","นามสกุลมารดา(ไทย)",
+        "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
+        "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
+        "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
+        "ชื่อจริงมารดา(อังกฤษ)","นามสกุลมารดา(อังกฤษ)",
+    ]
     return getForm(request,PersonalInfo,PersonalInfoForm,'baseInfo',user_id_input,dict_send)
 
 def address(request,user_id_input=None):
     dict_send = {'title':'Address'}
+    dict_send['name_list'] = [1,2,3,4,8,8]
     return getForm(request,Address,AddressForm,'address',user_id_input,dict_send)
 
 def work_info(request,user_id_input=None):
@@ -65,10 +88,30 @@ def work_info(request,user_id_input=None):
 
 def insignia(request,user_id_input=None):
     dict_send = {'title':'Insignia'}
+    dict_send['name_list'] = [
+        "1 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "2 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "3 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "4 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "5 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "6 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+    ]
     return getForm(request,Insignia,InsigniaForm,'baseInfo',user_id_input,dict_send)
 
 def education(request,user_id_input=None):
     dict_send = {'title':'Education'}
+    dict_send['name_list'] = [
+        "1 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "2 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "3 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "4 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "5 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "6 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+        "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
+    ]
     return getForm(request,Education,EducationForm,'baseInfo',user_id_input, dict_send)
 
 def list_teacher(request):

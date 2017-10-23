@@ -55,6 +55,9 @@ class AddressForm(ModelForm):
         # fields = ['number_regis', 'village_no_regis', 'village_name_regis']
         # fields = '__all__'
         exclude = ['user']
+    def __init__(self, *args, **kwargs):
+        super(AddressForm, self).__init__(*args, **kwargs) # Call to ModelForm constructor
+        self.fields['number_regis'].widget.attrs['size'] = 5
 
 
 class PersonalInfo(models.Model):
@@ -97,12 +100,12 @@ class PersonalInfo(models.Model):
     firstname_father_thai = models.CharField("ชื่อจริง(ไทย)",max_length=30)
     lastname_father_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
     firstnamename_father_eng = models.CharField("ชื่อจริง(อังกฤษ)",max_length=30)
-    lastname_father_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
+    lastname_father_eng = models.CharField(max_length=30)
 
-    firstname_mother_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
-    lastname_mother_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
-    firstname_mother_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
-    lastname_mother_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
+    firstname_mother_thai = models.CharField(max_length=30)
+    lastname_mother_thai = models.CharField(max_length=30)
+    firstname_mother_eng = models.CharField(max_length=30)
+    lastname_mother_eng = models.CharField(max_length=30)
 
 class PersonalInfoForm(ModelForm):
     class Meta:

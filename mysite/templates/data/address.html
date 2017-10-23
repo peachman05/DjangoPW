@@ -1,22 +1,119 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
   <h2>Address</h2>
-  <form method="post">
+  <h1>Django Girls Blog</h1>
+
+  
+    <form method="post">
     {% csrf_token %}
-    ที่อยู่ตามทะเบียนบ้าน
-    {{ form.non_field_errors }}    
-    <div class="fieldWrapper">
-        {{ form.title.errors }}
-        <label for="{{ form.number_regis.id_for_label }}">{{ form.number_regis.id_for_label }}:</label>
-        {{ form.number_regis }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.firstname_thai.errors }}
-        <label for="{{ form.number_regis.id_for_label }}">{{ form.number_regis.id_for_label }}:</label>
-        {{ form.number_regis }}
-    </div>
+    {{ form.non_field_errors }}
     
+    ที่อยู่ตามทะเบียนบ้าน    
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.number_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.number_regis.id_for_label }}">เลขที่</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.number_regis }}                        
+                </div>
+            </div>
+        </div>   
+        
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.village_no_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.village_no_regis.id_for_label }}">หมู่</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.village_no_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.village_name_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.village_name_regis.id_for_label }}">หมู่บ้าน</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.village_name_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.lane_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.lane_regis.id_for_label }}">ซอย</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.lane_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.road_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.road_regis.id_for_label }}">ถนน</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.road_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.sub_district_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.sub_district_regis.id_for_label }}">ตำบล</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.sub_district_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.district_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.district_regis.id_for_label }}">อำเภอ</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.district_regis }}                        
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.province_regis.errors }}
+                <div class="col-sm-1">                
+                    <label for="{{ form.province_regis.id_for_label }}">จังหวัด</label>           
+                </div>
+                <div class="col-sm-2">       
+                    {{ form.province_regis }}                        
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+ 
     <button type="submit">submit</button>
   </form>
+
 {% endblock %}
