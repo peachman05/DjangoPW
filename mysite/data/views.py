@@ -35,6 +35,11 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
                 recipe.save()
                 return redirect('home')
         dict_send['form'] = form
+        # print(type(form))
+        # for field in form:
+        #     print(field)
+        # for key, value in form.iteritems() :
+        #     print(key)
         return render(request,'data/'+path+'.html', dict_send)
     else:
         return render(request,'login.html', {})
@@ -52,7 +57,7 @@ def personal_info(request,user_id_input=None):
 
 def address(request,user_id_input=None):
     dict_send = {'title':'Address'}
-    return getForm(request,Address,AddressForm,'baseInfo',user_id_input,dict_send)
+    return getForm(request,Address,AddressForm,'address',user_id_input,dict_send)
 
 def work_info(request,user_id_input=None):
     dict_send = {'title':'Work Infomation'}

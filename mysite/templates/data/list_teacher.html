@@ -1,9 +1,22 @@
-{% if teacher_obj_list %}
-    <ul>
-        {% for user in teacher_obj_list %}
-            <li><a href="{% url 'data:address' user.id %}">{{ user.username }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if teacher_obj_list %}
+        <ul>
+            {% for user in teacher_obj_list %}
+                <li>
+                    {{ user.username }}                
+                    <a href="{% url 'data:personal_info' user.id %}">personal_info</a>  
+                    <a href="{% url 'data:address' user.id %}">address</a>
+                    <a href="{% url 'data:work_info' user.id %}">work_info</a> 
+                    <a href="{% url 'data:insignia' user.id %}">insignia</a>
+                    <a href="{% url 'data:education' user.id %}">education</a>                  
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+{% endblock %}

@@ -4,7 +4,19 @@
   <h2>Address</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    ที่อยู่ตามทะเบียนบ้าน
+    {{ form.non_field_errors }}    
+    <div class="fieldWrapper">
+        {{ form.title.errors }}
+        <label for="{{ form.number_regis.id_for_label }}">{{ form.number_regis.id_for_label }}:</label>
+        {{ form.number_regis }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.firstname_thai.errors }}
+        <label for="{{ form.number_regis.id_for_label }}">{{ form.number_regis.id_for_label }}:</label>
+        {{ form.number_regis }}
+    </div>
+    
     <button type="submit">submit</button>
   </form>
 {% endblock %}

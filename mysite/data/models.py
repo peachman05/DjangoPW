@@ -47,7 +47,7 @@ class Address(models.Model):
     province = models.CharField("จังหวัด(ปัจจุบัน)",max_length=70)
     postal_code = models.IntegerField("รหัสไปรษณีย์(ปัจจุบัน)",default=0)
     smartphone_number = models.CharField("เบอร์มือถือ(ปัจจุบัน)",max_length=20)
-    phone_number = models.CharField("เบอร์โทรบ้าาน(ปัจจุบัน)",max_length=20)
+    phone_number = models.CharField("เบอร์โทรบ้าน(ปัจจุบัน)",max_length=20)
 
 class AddressForm(ModelForm):
     class Meta:
@@ -60,49 +60,49 @@ class AddressForm(ModelForm):
 class PersonalInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE , default=1)
     TITLE_LIST = (
-        ('MR', 'Mr.'),
-        ('MRS', 'Mrs.'),
-        ('MISS', 'Miss.'),
+        ('MR', 'Mr.(นาย)'),
+        ('MRS', 'Mrs.(นาง)'),
+        ('MISS', 'Miss.(นางสาว)'),
     )
     title = models.CharField(max_length=6,choices=TITLE_LIST)
-    firstname_thai = models.CharField(max_length=30)
-    lastname_thai = models.CharField(max_length=30)
-    firstname_eng = models.CharField(max_length=30)
-    lastname_eng = models.CharField(max_length=30)
-    card_number = models.CharField(max_length=20)
-    religion = models.CharField(max_length=20)
+    firstname_thai = models.CharField("ชื่อจริง(ไทย)",max_length=30)
+    lastname_thai = models.CharField("นามสกุล(ไทย)",max_length=30)
+    firstname_eng = models.CharField("ชื่อจริง(อังกฤษ)",max_length=30)
+    lastname_eng = models.CharField("นามสกุล(อังกฤษ)",max_length=30)
+    card_number = models.CharField("เลขบัตรประชาชน",max_length=20)
+    religion = models.CharField("ศาสนา",max_length=20)
     BLOOD_TYPE_LIST = (
         ('A', 'A'),
         ('B', 'B'),
         ('AB', 'AB'),
         ('O', 'O'),
     )
-    blood_type = models.CharField(max_length=6,choices=BLOOD_TYPE_LIST)
-    birth_date = models.DateField('date published')
-    email =  models.EmailField(max_length=60)
+    blood_type = models.CharField("กรุ๊ปเลือด",max_length=6,choices=BLOOD_TYPE_LIST)
+    birth_date = models.DateField('วัน/เดือน/ปี เกิด')
+    email =  models.EmailField("Email",max_length=60)
     STATUS_LIST = (
-        ('MR', 'Married'),
-        ('SN', 'Single'),
-        ('DV', 'Divorce'),
-        ('WD', 'Widow'),
+        ('MR', 'Married(แต่งงาน)'),
+        ('SN', 'Single(โสด)'),
+        ('DV', 'Divorce(หย่า)'),
+        ('WD', 'Widow(หม้าย)'),
     )
-    status = models.CharField(max_length=10,choices=STATUS_LIST)
-    domicile_province = models.CharField(max_length=30)
+    status = models.CharField("สถานะ",max_length=10,choices=STATUS_LIST)
+    domicile_province = models.CharField("ภูมิลำเนาเดิม จังหวัด",max_length=30)
 
-    firstname_spouse_thai = models.CharField(max_length=30)
-    lastname_spouse_thai = models.CharField(max_length=30)
-    firstname_spouse_eng = models.CharField(max_length=30)
-    lastname_spouse_eng = models.CharField(max_length=30)
+    firstname_spouse_thai = models.CharField("ชื่อจริงคู่สมรส(ไทย)",max_length=30)
+    lastname_spouse_thai = models.CharField("นามสกุลคู่สมรส(ไทย)",max_length=30)
+    firstname_spouse_eng = models.CharField("ชื่อจริงคู่สมรส(อังกฤษ)",max_length=30)
+    lastname_spouse_eng = models.CharField("นามสกุลคู่สมรส(อังกฤษ)",max_length=30)
 
-    firstname_father_thai = models.CharField(max_length=30)
-    lastname_father_thai = models.CharField(max_length=30)
-    firstnamename_father_eng = models.CharField(max_length=30)
-    lastname_father_eng = models.CharField(max_length=30)
+    firstname_father_thai = models.CharField("ชื่อจริง(ไทย)",max_length=30)
+    lastname_father_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
+    firstnamename_father_eng = models.CharField("ชื่อจริง(อังกฤษ)",max_length=30)
+    lastname_father_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
 
-    firstname_mother_thai = models.CharField(max_length=30)
-    lastname_mother_thai = models.CharField(max_length=30)
-    firstname_mother_eng = models.CharField(max_length=30)
-    lastname_mother_eng = models.CharField(max_length=30)
+    firstname_mother_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
+    lastname_mother_thai = models.CharField("คำนำหน้า(ไทย)",max_length=30)
+    firstname_mother_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
+    lastname_mother_eng = models.CharField("คำนำหน้า(อังกฤษ)",max_length=30)
 
 class PersonalInfoForm(ModelForm):
     class Meta:
