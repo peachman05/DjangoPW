@@ -1,1 +1,41 @@
-hello
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h2>ข้อมูลเครื่องราชอิสริยาภรณ์</h2>
+
+  
+    <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+     
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="fieldWrapper">
+                {{ form.class1.errors }}
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1"><b>ชั้นที่ 1</b></div>
+                <div class="col-sm-3">{{ form.class1 }} </div>
+
+                {{ form.date1.errors }}
+                <div class="col-sm-1"><b>วัน/เดือน/ปี</b></div>
+                <div class="col-sm-3">{{ form.date1 }}</div>
+                
+            </div>
+        </div>         
+     
+        
+   
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"> 
+                <button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+  </form>
+
+{% endblock %}

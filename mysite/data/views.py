@@ -98,7 +98,7 @@ def insignia(request,user_id_input=None):
         "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
         "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
     ]
-    return getForm(request,Insignia,InsigniaForm,'baseInfo',user_id_input,dict_send)
+    return getForm(request,Insignia,InsigniaForm,'insignia',user_id_input,dict_send)
 
 def education(request,user_id_input=None):
     dict_send = {'title':'Education'}
@@ -112,7 +112,7 @@ def education(request,user_id_input=None):
         "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
         "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
     ]
-    return getForm(request,Education,EducationForm,'baseInfo',user_id_input, dict_send)
+    return getForm(request,Education,EducationForm,'education',user_id_input, dict_send)
 
 def list_teacher(request):
     teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #[:5]
