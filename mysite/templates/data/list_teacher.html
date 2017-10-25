@@ -1,22 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9">
+                <table class="table table-striped table-dark table-bordered ">
+                    <thead class="thead-dark ">
+                        <tr>
+                            <th >#</th>
+                            <th >username</th>
+                            <th class="col-md-2">ข้อมูลส่วนตัว</th>
+                            <th class="col-md-2">ข้อมูลที่อยู่</th>
+                            <th class="col-md-2">ข้อมูลการทำงาน</th>
+                            <th class="col-md-2">ข้อมูลเครื่อง<br>ราชอิสริยาภรณ์</th>
+                            <th class="col-md-2">ข้อมูลการศึกษา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-    {% if teacher_obj_list %}
-        <ul>
-            {% for user in teacher_obj_list %}
-                <li>
-                    {{ user.username }}                
-                    <a href="{% url 'data:personal_info' user.id %}">personal_info</a>  
-                    <a href="{% url 'data:address' user.id %}">address</a>
-                    <a href="{% url 'data:work_info' user.id %}">work_info</a> 
-                    <a href="{% url 'data:insignia' user.id %}">insignia</a>
-                    <a href="{% url 'data:education' user.id %}">education</a>                  
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+                        {% if teacher_obj_list %}
+                            
+                            {% for user in teacher_obj_list %}
+                                <tr>
+                                    <td text-align=center>{{forloop.counter }}</td>
+                                    <td>{{ user.username }}</td>          
+                                    <td><a href="{% url 'data:personal_info' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>   
+                                    <td><a href="{% url 'data:address' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td> 
+                                    <td><a href="{% url 'data:work_info' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  
+                                    <td><a href="{% url 'data:insignia' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td> 
+                                    <td><a href="{% url 'data:education' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>                   
+                                </tr>
+                            {% endfor %}
+                            
+                        {% else %}
+                            <p>No polls are available.</p>
+                        {% endif %}
+
+                    </tbody>
+                </table>
+             </div>      
+             <div class="col-sm-1"></div>
+        </div>
+    </div>
 
 {% endblock %}

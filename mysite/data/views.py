@@ -88,30 +88,12 @@ def work_info(request,user_id_input=None):
 
 def insignia(request,user_id_input=None):
     dict_send = {'title':'Insignia'}
-    dict_send['name_list'] = [
-        "1 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "2 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "3 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "4 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "5 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "6 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-    ]
+    
     return getForm(request,Insignia,InsigniaForm,'insignia',user_id_input,dict_send)
 
 def education(request,user_id_input=None):
     dict_send = {'title':'Education'}
-    dict_send['name_list'] = [
-        "1 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "2 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "3 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "4 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "5 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "6 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "7 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-        "8 ขั้น","วัน/เดือน/ปี ที่ได้รับ",
-    ]
+   
     return getForm(request,Education,EducationForm,'education',user_id_input, dict_send)
 
 def list_teacher(request):
