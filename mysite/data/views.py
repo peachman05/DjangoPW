@@ -37,11 +37,13 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
         dict_send['form'] = form
         # print(type(form))
         i = 0
-        # dict_send['form_tuple'] = []
+        dict_send['form_tuple'] = []
         # print(dict_send)
-        # for field in form:
-        #     dict_send['form_tuple'].append( (dict_send['name_list'][i] , field) )
-        #     i += 1
+        for field in form:
+            if len(dict_send['name_list']) > 0 :
+                dict_send['form_tuple'].append( (dict_send['name_list'][i] , field) )
+                print(field.id_for_label )
+            i += 1
         # for key, value in form.iteritems() :
         #     print(key)
         return render(request,'data/'+path+'.html', dict_send)
@@ -79,20 +81,70 @@ def personal_info(request,user_id_input=None):
 
 def address(request,user_id_input=None):
     dict_send = {'title':'Address'}
-    dict_send['name_list'] = [1,2,3,4,8,8]
+    dict_send['name_list'] = [
+        "เลขที่",
+        "หมู่",
+        "หมู่บ้าน",
+        "ซอย",
+        "ถนน",
+        "ตำบล",
+        "อำเภอ",
+        "จังหวัด",
+        "รหัสไปรษณีย์",
+        "เบอร์โทรศัพท์มือถือ",
+        "เบอร์โทรศัพท์",
+
+        "เลขที่",
+        "หมู่",
+        "หมู่บ้าน",
+        "ซอย",
+        "ถนน",
+        "ตำบล",
+        "อำเภอ",
+        "จังหวัด",
+        "รหัสไปรษณีย์",
+        "เบอร์โทรศัพท์มือถือ",
+        "เบอร์โทรศัพท์",
+        
+    ]
     return getForm(request,Address,AddressForm,'address',user_id_input,dict_send)
 
 def work_info(request,user_id_input=None):
     dict_send = {'title':'Work Infomation'}
+    dict_send['name_list'] = []
     return getForm(request,WorkInfo,WorkInfoForm,'work_info',user_id_input,dict_send)
 
 def insignia(request,user_id_input=None):
     dict_send = {'title':'Insignia'}
+    dict_send['name_list'] = []
     
     return getForm(request,Insignia,InsigniaForm,'insignia',user_id_input,dict_send)
 
 def education(request,user_id_input=None):
     dict_send = {'title':'Education'}
+    dict_send['name_list'] = [
+        "อักษรย่อ",
+        "สาขาวิชาเอก",
+        "สาขาวิชาโท",
+        "สถาบัน",
+        "ปีที่เริ่มศึกษา",
+        "ปีที่สำเร็จการศึกษา",
+
+        "อักษรย่อ",
+        "สาขาวิชาเอก",
+        "สาขาวิชาโท",
+        "สถาบัน",
+        "ปีที่เริ่มศึกษา",
+        "ปีที่สำเร็จการศึกษา",
+
+        "อักษรย่อ",
+        "สาขาวิชาเอก",
+        "สาขาวิชาโท",
+        "สถาบัน",
+        "ปีที่เริ่มศึกษา",
+        "ปีที่สำเร็จการศึกษา",
+
+    ]
    
     return getForm(request,Education,EducationForm,'education',user_id_input, dict_send)
 
