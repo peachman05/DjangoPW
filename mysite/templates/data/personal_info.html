@@ -7,173 +7,160 @@
 
   
   <form method="post">
-      {% csrf_token %}
-      {{ form.non_field_errors }}
-      
+        {% csrf_token %}  
       
 
-      <div class="container-fluid">
-         
-        <div class="row">              
-            {{ form.title.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>คำนำหน้าชื่อ</b></div>
-            <div class="col-sm-3">{{ form.title }} </div>
-        </div>
+        <table class="table table-striped table-dark  ">
+            <tr>            
+                <td></td>              
+                <td><b>คำนำหน้าชื่อ</b></td> 
+                <td>{{ form.title }}{{ form.title.errors }}</td>
+                <td></td> 
+                <td></td> 
+            </tr>
 
-        <div class="row">    
-            {{ form.firstname_thai.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อ(ไทย)</b></div>
-            <div class="col-sm-3">{{ form.firstname_thai }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อ(ไทย)</b></td> 
+                <td>{{ form.firstname_thai }}{{ form.firstname_thai.errors }}</td>
 
-            {{ form.lastname_thai.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_thai }}</div>
-        </div>
+                <td><b>นามสกุล</b></td> 
+                <td>{{ form.lastname_thai }}{{ form.lastname_thai.errors }}</td>
+            </tr>
 
-        <div class="row">    
-            {{ form.firstname_eng.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อ(อังกฤษ)</b></div>
-            <div class="col-sm-3">{{ form.firstname_eng }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อ(อังกฤษ)</b></td> 
+                <td>{{ form.firstname_eng }}{{ form.firstname_eng.errors }}</td>
 
-            {{ form.lastname_eng.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_eng }}</div>
-        </div>
+                <td><b>นามสกุล</b></td> 
+                <td>{{ form.lastname_eng }}{{ form.lastname_eng.errors }}</td>
+            </tr>
 
-        <div class="row">
-            {{ form.card_number.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>เลขบัตรประจำตัวประชาชน</b></div>
-            <div class="col-sm-3">{{ form.card_number }}</div>
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>เลขบัตรประจำตัวประชาชน</b></td> 
+                <td>{{ form.card_number }}{{ form.card_number.errors }}</td>
 
-        <div class="row">
-            {{ form.religion.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ศาสนา</b></div>
-            <div class="col-sm-3">{{ form.religion }}</div>
-        </div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-        <div class="row">
-            {{ form.blood_type.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>กรุ๊ปเลือด</b></div>
-            <div class="col-sm-3">{{ form.blood_type }}</div>
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>ศาสนา</b></td> 
+                <td>{{ form.religion }}{{ form.religion.errors }}</td>
 
-        <div class="row">
-            {{ form.birth_date.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>วัน/เดือน/ปี เกิด</b></div>
-            <div class="col-sm-3">{{ form.birth_date }}</div>
-        </div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-        <div class="row">
-            {{ form.email.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>Email</b></div>
-            <div class="col-sm-3">{{ form.email }}</div>
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>กรุ๊ปเลือด</b></td> 
+                <td>{{ form.blood_type }}{{ form.blood_type.errors }}</td>
 
-        <div class="row">
-            {{ form.status.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>สถานภาพ</b></div>
-            <div class="col-sm-2">{{ form.status }}</div>
-        </div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-        <div class="row">
-            {{ form.domicile_province.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ภูมิลำเนาเดิม จังหวัด</b></div>
-            <div class="col-sm-3">{{ form.domicile_province }}</div>
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>วัน/เดือน/ปีเกิด<br>(ตัวอย่าง 2017-10-05)</b></td> 
+                <td>{{ form.birth_date }}{{ form.birth_date.errors }}</td>
 
-        <div class="row">
-            {{ form.firstname_spouse_thai.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อคู่สมรส(ไทย)</b></div>
-            <div class="col-sm-3">{{ form.firstname_spouse_thai }}</div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-            {{ form.lastname_spouse_thai.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_spouse_thai }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>Email</b></td> 
+                <td>{{ form.email }}{{ form.email.errors }}</td>
 
-        </div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-        <div class="row">
-            {{ form.firstname_spouse_eng.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อคู่สมรส(อังกฤษ)</b></div>
-            <div class="col-sm-3">{{ form.firstname_spouse_eng }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>สถานภาพ</b></td> 
+                <td>{{ form.status }}{{ form.status.errors }}</td>
 
-            {{ form.lastname_spouse_eng.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_spouse_eng }}</div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>ภูมิลำเนาเดิม จังหวัด</b></td> 
+                <td>{{ form.domicile_province }}{{ form.domicile_province.errors }}</td>
 
-        <div class="row">
-            {{ form.firstname_father_thai.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อบิดา(ไทย)</b></div>
-            <div class="col-sm-3">{{ form.firstname_father_thai }}</div>
+                <td></td> 
+                <td></td>
+            </tr>
 
-            {{ form.lastname_father_thai.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_father_thai }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อคู่สมรส(ไทย)</b></td> 
+                <td>{{ form.firstname_spouse_thai }}{{ form.firstname_spouse_thai.errors }}</td>
 
-        </div>
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_spouse_thai }}{{ form.lastname_spouse_thai.errors }}</td>
+            </tr>
 
-        <div class="row">
-            {{ form.firstnamename_father_eng.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อบิดา(อังกฤษ)</b></div>
-            <div class="col-sm-3">{{ form.firstnamename_father_eng }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อคู่สมรส(อังกฤษ)</b></td> 
+                <td>{{ form.firstname_spouse_eng }}{{ form.firstname_spouse_eng.errors }}</td>
 
-            {{ form.lastname_father_eng.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_father_eng }}</div>
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_spouse_eng }}{{ form.lastname_spouse_eng.errors }}</td>
+            </tr>
 
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อบิดา(ไทย)</b></td> 
+                <td>{{ form.firstname_father_thai }}{{ form.firstname_father_thai.errors }}</td>
 
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_father_thai }}{{ form.lastname_father_thai.errors }}</td>
+            </tr>
 
-        <div class="row">
-            {{ form.firstname_mother_thai.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อมารดา(ไทย)</b></div>
-            <div class="col-sm-3">{{ form.firstname_mother_thai }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อบิดา(อังกฤษ)</b></td> 
+                <td>{{ form.firstnamename_father_eng }}{{ form.firstnamename_father_eng.errors }}</td>
 
-            {{ form.lastname_mother_thai.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_mother_thai }}</div>
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_father_eng }}{{ form.lastname_father_eng.errors }}</td>
+            </tr>
 
-        </div>
-    
-        <div class="row">
-            {{ form.firstname_mother_eng.errors }}
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2"><b>ชื่อมารดา(อังกฤษ)</b></div>
-            <div class="col-sm-3">{{ form.firstname_mother_eng }}</div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อมารดา(ไทย)</b></td> 
+                <td>{{ form.firstname_mother_thai }}{{ form.firstname_mother_thai.errors }}</td>
 
-            {{ form.lastname_mother_eng.errors }}
-            <div class="col-sm-1"><b>นามสกุล</b></div>
-            <div class="col-sm-3">{{ form.lastname_mother_eng }}</div>
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_mother_thai }}{{ form.lastname_mother_thai.errors }}</td>
+            </tr>
 
-        </div>
+            <tr>            
+                <td></td>              
+                <td><b>ชื่อมารดา(อังกฤษ)</b></td> 
+                <td>{{ form.firstname_mother_eng }}{{ form.firstname_mother_eng.errors }}</td>
 
+                <td>นามสกุล</td> 
+                <td>{{ form.lastname_mother_eng }}{{ form.lastname_mother_eng.errors }}</td>
+            </tr>
 
-        <br>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-1"> 
-                <button type="submit">submit</button>
-            </div>
-        </div>
-      </div>
+        
+
+        </table>
+       
+
+        <button type="submit">submit</button>
+           
   </form>
 
 {% endblock %}
