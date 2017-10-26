@@ -57,25 +57,25 @@
       <ul class="nav navbar-nav">
         {% if user.is_authenticated %}
           {% if user.is_staff %}
-            <li><a href="{% url 'data:list_teacher' %}">list Teacher</a></li> 
+            <li><a href="{% url 'data:list_teacher' %}">รายชื่อบุคลากร</a></li> 
           {% else %}
 
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'data:personal_info' %}">personal_info</a></li>
-            <li><a href="{% url 'data:address' %}">address</a></li>
-            <li><a href="{% url 'data:work_info' %}">work_info</a></li>
-            <li><a href="{% url 'data:insignia' %}">insignia</a></li>
-            <li><a href="{% url 'data:education' %} ">education</a></li>
+            <li><a href="{% url 'home' %}">หน้าแรก</a></li>
+            <li><a href="{% url 'data:personal_info' %}">ข้อมูลส่วนตัว</a></li>
+            <li><a href="{% url 'data:address' %}">ข้อมูลที่อยู่</a></li>
+            <li><a href="{% url 'data:work_info' %}">ข้อมูลการทำงาน</a></li>
+            <li><a href="{% url 'data:insignia' %}">ข้อมูลเครื่องราชอิสริยาภรณ์</a></li>
+            <li><a href="{% url 'data:education' %} ">ข้อมูลการศึกษา</a></li>
           {% endif %}
         {% endif %}        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-          Hi {{ user.username }}
+          <li><a href="#">Hi! {{ user.username }}</a></li>
           <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>   
         {% else %}
           <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li> 
-          <a href="{% url 'signup' %}">signup</a> <br>               
+          <li><a href="{% url 'signup' %}">signup</a> <br></li>           
         {% endif %}
         
       </ul>
@@ -108,7 +108,7 @@
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p></p>
 </footer>
 
 </body>

@@ -2,6 +2,6 @@ input[type="number"] {
     width:50px;
  }
 
-td {
-   text-align: center;   
-}
+ .table td {
+    text-align: center;   
+ }

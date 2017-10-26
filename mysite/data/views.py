@@ -13,7 +13,7 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
     elif request.user.is_staff:
         userInput = get_object_or_404(User, pk=user_id_input)
 
-    print(userInput.username)
+    # print(userInput.username)
 
     if request.user.is_authenticated:  
         try: # edit
@@ -47,8 +47,8 @@ def getForm(request,modelInput,modelFormInput,path,user_id_input,dict_send):
         # for key, value in form.iteritems() :
         #     print(key)
         return render(request,'data/'+path+'.html', dict_send)
-    else:
-        return render(request,'login.html', {})
+    else:        
+        return redirect('login')
 
 # def checkUser(request,modelInput,modelFormInput,path,user_id_input):
     if user_id_input == None:
@@ -150,4 +150,8 @@ def education(request,user_id_input=None):
 
 def list_teacher(request):
     teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #[:5]
+    # temp =  User.objects.select_related('personal_info')
+    # print(temp)
+    for entry in teacher_obj_list:
+        print(type(entry))
     return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})
