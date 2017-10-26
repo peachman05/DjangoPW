@@ -17,6 +17,7 @@
             <tr>
                 <th ></th>
                 <th align="center" valign="middle" >username</th>
+                <th>ชื่อ</th>
                 <th>ข้อมูล<br>ส่วนตัว</th>
                 <th>ข้อมูล<br>ที่อยู่</th>
                 <th>ข้อมูล<br>การทำงาน</th>
@@ -27,10 +28,11 @@
         <tbody>
 
         
-                {% for user in teacher_obj_list %}
+                {% for nameStr,user in teacher_obj_list %}
                     <tr>
                         <td text-align=center>{{forloop.counter }}</td>
-                        <td>{{ user.username }}</td>          
+                        <td>{{ user.username }}</td>
+                        <td>{{nameStr}}</td>          
                         <td><a href="{% url 'data:personal_info' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>   
                         <td><a href="{% url 'data:address' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td> 
                         <td><a href="{% url 'data:work_info' user.id %}"><span class="glyphicon glyphicon-pencil"></span></a></td>  

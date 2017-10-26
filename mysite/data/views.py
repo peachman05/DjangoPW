@@ -152,6 +152,14 @@ def list_teacher(request):
     teacher_obj_list = User.objects.filter(is_staff=False).order_by('username')  #[:5]
     # temp =  User.objects.select_related('personal_info')
     # print(temp)
+    new_list = []
     for entry in teacher_obj_list:
         print(type(entry))
-    return render(request,'data/list_teacher.html', {'teacher_obj_list':teacher_obj_list})
+        personEntry = PersonalInfo.objects.get(user=entry)
+        print(personEntry.firstname_eng) 
+        if personEntry != None:
+            nameStr = personEntry.firstname_thai+" "+personEntry.lastname_thai
+        else:
+            nameStr = "Unknown"
+        new_list.append((nameStr,entry))
+    return render(request,'data/list_teacher.html', {'teacher_obj_list':new_list})
